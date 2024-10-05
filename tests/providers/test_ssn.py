@@ -585,16 +585,16 @@ class TestEsCO(unittest.TestCase):
         # NITs and check digits of some Colombian state entities.
         # Source: <https://www.funcionpublica.gov.co/web/sigep/entidades>
         for nit, check_digit in (
-            ("830040256", "0"),
-            ("899999003", "1"),
-            ("892301483", "2"),
-            ("800194600", "3"),
-            ("899999403", "4"),
-            ("860042945", "5"),
-            ("830114475", "6"),
-            ("811000231", "7"),
-            ("899999027", "8"),
-            ("900639630", "9"),
+                ("830040256", "0"),
+                ("899999003", "1"),
+                ("892301483", "2"),
+                ("800194600", "3"),
+                ("899999403", "4"),
+                ("860042945", "5"),
+                ("830114475", "6"),
+                ("811000231", "7"),
+                ("899999027", "8"),
+                ("900639630", "9"),
         ):
             with self.subTest(nit=nit, check_digit=check_digit):
                 assert nit_check_digit(nit) == check_digit
@@ -856,9 +856,9 @@ class TestFrCH:
         Faker.seed(0)
 
         with mock.patch(
-            "faker.providers.ssn.fr_CH.Provider.numerify",
-            return_value=digits,
-            autospec=True,
+                "faker.providers.ssn.fr_CH.Provider.numerify",
+                return_value=digits,
+                autospec=True,
         ):
             result = fake.vat_id()
             assert result == expected
@@ -1392,3 +1392,15 @@ class TestUkUA(unittest.TestCase):
     def test_incorrect_gender(self):
         with pytest.raises(ValueError):
             self.fake.ssn(gender="f")
+
+
+class TestKoKr(unittest.TestCase):
+    def setUp(self):
+        self.fake = Faker("ko_KR")
+        Faker.seed(0)
+
+    def test_rrn_gender(self):
+        m = self.fake.ssn(gender="M")
+        w = self.fake.ssn(gender="F")
+        print(m)
+        print(w)
