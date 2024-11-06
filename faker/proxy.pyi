@@ -476,6 +476,11 @@ class Faker:
         """
         ...
 
+    def drivers_license(self) -> str:
+        """
+        Generate driver's license.
+        """
+
     def aba(self) -> str:
         """
         Generate an ABA routing transit number.

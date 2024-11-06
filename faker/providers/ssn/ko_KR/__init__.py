@@ -162,7 +162,3 @@ class Provider(SsnProvider):
 
         ssn = f"{prefix}-{cob_sex:1}{random5:05d}{vf_num:01d}"
         return ssn
-
-    def verify(self, value: str) -> bool:
-        # verifying value
-        return True
